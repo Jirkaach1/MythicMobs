@@ -1,0 +1,204 @@
+
+EredinSpawn:
+  Cooldown: 999999
+  Skills:
+    - throw{velocity=3;velocityY=0;repeat=40;repeatInterval=1} @PlayersInRadius{r=60}
+    - potion{t=SLOW;d=999999;l=10;force=true} @self
+    - potion{t=DAMAGE_RESISTANCE;d=999999;l=10;force=true} @self
+    - effect:particlesphere{particle=smoke;amount=100;radius=4;y=0.7} @self
+    - effect:particletornado{p=reddust;cp=smoke;mr=1;h=3;i=2;d=480;rs=1;sh=1;cs=0;ca=0;chs=0.1;cvs=0.3;cps=1;cyo=-4} @self
+    - effect:sound{s=entity.elder_guardian.death;v=1;p=0.5} @PIR{r=60}
+    - effect:sound{s=entity.enderdragon.hurt;v=1;p=0.5} @PIR{r=60}
+    - effect:sound{s=entity.zombie_villager.converted;v=1;p=0.5} @PIR{r=60}
+    - effect:sound{s=block.portal.trigger;v=1;p=1.7} @PIR{r=60}
+    - runAIGoalSelector{goal=clear;repeat=350;repeatInterval=1} @self
+    - delay 40
+    - effect:spin{duration=250;velocity=8} @self
+    - effect:glow{color=GOLD;duration=999999} @self
+    - potion{t=LEVITATION;d=999999;l=1;force=true} @self
+    - effect:sound{s=block.portal.ambient;v=0.7;p=2;repeat=6;repeatInterval=10} @PIR{r=60}
+    - effect:particlesphere{particle=smoke;amount=100;radius=4;y=0.7;repeat=7;repeatInterval=10} @self
+    - effect:sound{s=item.totem.use;v=1;p=0.5} @PIR{r=60}
+    - effect:sound{s=entity.wither.hurt;v=1;p=0.5} @PIR{r=60}
+    - effect:sound{s=entity.evocation_illager.cast_spell;v=1;p=2} @PIR{r=60}
+    - effect:sound{s=entity.wither.ambient;v=1;p=0.5} @PIR{r=60}
+    - delay 80
+    - potion{t=LEVITATION;d=999999;l=3;force=true} @self
+    - effect:sound{s=entity.wither.ambient;v=1;p=1.7} @PIR{r=60}
+    - skill{s=EredinSpawnTick;repeat=5;repeatInterval=40}
+    - delay 230
+    - potion{t=LEVITATION;d=0;l=0;force=true} @self
+    - effect:glow{color=GOLD;duration=1} @self
+    - effect:sound{s=entity.illusion_illager.mirror_move;v=1;p=2} @PIR{r=60}
+    - effect:sound{s=block.enchantment_table.use;v=1;p=2} @PIR{r=60}
+    - effect:sound{s=entity.wither.spawn;v=1;p=2} @PIR{r=60}
+    - potion{t=SLOW;d=1;l=0;force=true} @self
+    - potion{t=DAMAGE_RESISTANCE;d=1;l=0;force=true} @self
+    - teleport{spreadh=0;spreadv=0} @PIR{r=60;limit=1;sort=RANDOM}
+    - delay 1
+    - runAIGoalSelector{goal=meleeattack} @self
+
+    
+
+
+
+
+EredinSpawnProjTick:
+  Skills:
+  - effect:particles{p=lava;amount=1;speed=2;hR=0.1;vR=0.1} @origin
+  - effect:particles{p=lava;amount=1;speed=2;hR=0.1;vR=0.1} @origin
+  
+  
+EredinSpawnProjHit:
+  Skills:
+  - effect:sound{s=entity.endereye.death;v=1;p=1.7}
+EredinSpawnTick:
+  Skills:
+  - projectile{onTick=EredinSpawnProjTick;onHit=EredinSpawnProjHit;v=10;i=1;hR=1;vR=1;StopAtBlock=true;g=0.6;vO=0.7} @ring{radius=12;points=12}
+  - effect:sound{s=entity.wither.ambient;v=1;p=0.5} @PIR{r=100}
+EredinuvOhen:
+  Cooldown: 120
+  Skills:
+  - message{m="<mob.name> &7vyvolal ohnivou vlnu"} @PlayersInRadius{r=50}
+  - skill{s=EredinuvOhenLoop;repeat=4;repeatInterval=10}
+
+EredinuvOhenLoop:
+  Skills:
+   - projectile{onTick=EredinuvOhenTick;onHit=EredinuvOhenHit;i=1;StopAtBlock=true;mr=10} @ring{radius=30;points=48}
+
+  
+   
+EredinuvOhenTick:
+  Skills:
+  - effect:particles{p=flame;amount=1;speed=0;hR=0.2;vR=0.2} @origin 
+  - effect:particles{p=flame;amount=1;speed=0;hR=0.2;vR=0.2} @origin
+
+EredinuvOhenHit:
+  Skills:
+  - sound{s=entity.blaze.hurt;v=0.8;p=2} @PIR{r=30}
+  - damage{a=1;ignoreArmor=true} @EntitiesNearOrigin{r=3}
+EredinTeleport:
+  Cooldown: 120
+  Skills:
+  - potion{type=INVISIBILITY;l=3;duration=100} @self
+  - effect:particlesphere{p=dragonbreath;amount=500;radius=5;d=60} @self 
+  - delay 20
+  - effect:particlesphere{p=dragonbreath;amount=500;radius=5;d=60} @self 
+  - message{m="<mob.name> &7se zneviditelnil a teleportoval"} @PlayersInRadius{r=50}
+  - teleport{spreadh=0;spreadv=0} @LOWEST_HEALTH
+EredinStit:
+  Skills:
+  - effect:sound{s=entity.wither.spawn;v=1;p=0.5} @PIR{r=40}
+  - message{m="<mob.name> &7se vyhýbá poškození na 10 sekund"} @PlayersInRadius{r=50}
+  - potion{t=DAMAGE_RESISTANCE;d=999999;l=100;force=true} @self
+  - effect:particlesphere{particle=enchantmenttable;amount=1000;radius=4;vertical=false;offsetY=1} @self
+  - delay 40
+  - effect:particlesphere{particle=enchantmenttable;amount=1000;radius=4;vertical=false;offsetY=1} @self
+  - delay 40
+  - effect:particlesphere{particle=enchantmenttable;amount=1000;radius=4;vertical=false;offsetY=1} @self
+  - delay 40
+  - effect:particlesphere{particle=enchantmenttable;amount=1000;radius=4;vertical=false;offsetY=1} @self
+  - delay 40
+  - effect:particlesphere{particle=enchantmenttable;amount=1000;radius=4;vertical=false;offsetY=1} @self
+  - delay 40
+  - effect:particlesphere{particle=enchantmenttable;amount=1000;radius=4;vertical=false;offsetY=1} @self
+  - potion{t=DAMAGE_RESISTANCE;d=1;l=100;force=true} @self
+
+
+EredinBoure:
+  Cooldown: 120
+  Skills:
+  - throw{velocity=5;velocityY=5} @PlayersInRadius{r=20}
+  - potion{t=SLOW;d=999999;l=10;force=true} @self
+  - potion{t=DAMAGE_RESISTANCE;d=999999;l=10;force=true} @self
+  - effect:particlering{particle=endrod;radius=1;points=32;amount=1;hS=1;vS=0;y=0.3} @self
+  - effect:particlering{particle=endrod;radius=1;points=32;amount=1;hS=1;vS=0;y=0.6} @self
+  - effect:particlering{particle=endrod;radius=1;points=32;amount=1;hS=1;vS=0;y=0.9} @self
+  - effect:sound{s=entity.illusion_illager.cast_spell;v=1;p=2} @PIR{r=60}
+  - effect:sound{s=entity.player.breath;v=1;p=0.5} @PIR{r=60}
+  - effect:sound{s=entity.evocation_illager.prepare_attack;v=1;p=0.5} @PIR{r=60}
+  - delay 25
+  - message{m="<mob.name> &7vyvolal blesky"} @PlayersInRadius{r=50}
+  - skill{s=EredinBoureStorm;repeat=11;repeatInterval=10}
+  - delay 80
+  - potion{t=SLOW;d=1;l=0;force=true} @self
+  - potion{t=DAMAGE_RESISTANCE;d=1;l=0;force=true} @self
+  - runAIGoalSelector{goal=meleeattack} @self
+EredinBoureStorm:
+  Cooldown: 120
+  Skills:
+  - effect:particlering{particle=cloud;radius=10;points=64;amount=1;hS=1;vS=0;y=0} @self
+  - effect:sound{s=entity.lightning_bolt.thunder;v=1;p=1} @PIR{r=60}
+  - delay 10
+  - lightning{d=10;} @PlayersInRadius{r=10}
+EredinOtrava:
+  Cooldown: 120
+  Skills:
+  - message{m="<mob.name> &7otrávil hráče v okolí"} @PlayersInRadius{r=20}
+  - potion{t=POISON;d=100;l=8;force=true} @PlayersInRadius{r=20}
+  - effect:particlesphere{particle=happyVillager;amount=500;radius=7;vertical=false;offsetY=1} @Self
+  - delay 20
+  - effect:particlesphere{particle=happyVillager;amount=500;radius=7;vertical=false;offsetY=1} @Self
+  
+EredinZpomaleni:
+  Cooldown: 120
+  Skills:
+  - message{m="<mob.name> &7zpomalil hráče v okolí"} @PlayersInRadius{r=20}
+  - potion{t=SLOW;d=60;l=5;force=true} @PlayersInRadius{r=20}
+  - effect:particlesphere{particle=endRod;amount=500;radius=7;vertical=false;offsetY=1} @Self
+  - delay 20
+  - effect:particlesphere{particle=endRod;amount=500;radius=7;vertical=false;offsetY=1} @Self
+EredinOslabeni:
+  Cooldown: 120
+  Skills:
+  - message{m="<mob.name> &7oslabil hráče v okolí"} @PlayersInRadius{r=20}
+  - potion{t=WEAKNESS;d=80;l=2;force=true} @PlayersInRadius{r=20}
+  - effect:particlesphere{particle=mobspell;amount=500;radius=7;vertical=false;offsetY=1} @Self
+  - delay 20
+  - effect:particlesphere{particle=mobspell;amount=500;radius=7;vertical=false;offsetY=1} @Self
+
+EredinUder:
+  Cooldown: 120
+  Skills:
+  - message{m="<mob.name> &7zasáhl blízké hráče mocným úderem"} @PlayersInRadius{r=100}
+  - effect:particlesphere{particle=reddust;amount=500;radius=7;vertical=false;offsetY=1} @Self
+  - effect:sound{s=entity.wither.break_block;v=1;p=0.5} @PIR{r=100}
+  - damage{d=100;ignorearmor=true;} @PlayersInRadius{r=15}
+
+  Cooldown: 120
+EredinRychlost:
+  Skills:
+  - message{m="<mob.name> &7se rozběhl"} @PlayersInRadius{r=40}
+  - effect:particlesphere{particle=cloud;amount=50;radius=1;offsetY=1} @Self 
+  - potion{type=SPEED;d=200;amplifier=2} @Self
+  Cooldown: 120
+
+EredinLifesteal:
+  Cooldown: 120
+  Skills:
+  - damage{d=10} @Target
+  - message{m="<mob.name> &7vysál životy nejbližšího hráče a uzdravil se"} @PlayersInRadius{r=40}
+  - heal{d=1000} @Self
+EredinovaTemnota:
+  Cooldown: 120
+  Skills:
+  - message{m="<mob.name> &7oslepil hráče v okolí"} @PlayersInRadius{r=40}
+  - potion{t=BLINDNESS;d=140;l=1} @PlayersInRadius{r=40}
+
+EredinSmrt:
+  Skills:
+  - effect:particlesphere{particle=largesmoke;amount=100;radius=2;vertical=false;offsetY=1} @Self
+
+#EredinVybraniSkillu:
+#  Skills:
+#  - randomskill{skills=EredinBoure,EredinOhen,EredinUder,EredinTeleport} >100
+EredinAI:
+  Skills:
+  - threat{a=0} @PlayersInWorld
+  - threat{a=10000} @NearestPlayer
+EredinEfekt:
+  Skills:
+   - effect:particletornado{p=smoke;cp=reddust;mr=1;h=1;i=1;rs=1;sh=1;cs=1;ca=1;chs=0.1;cps=0;cyo=-1} 
+
+
+

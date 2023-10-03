@@ -1,0 +1,112 @@
+Eredin:
+  Mobtype: PIG_ZOMBIE
+  Display: '&f&lEredin'
+  Health: 25000
+  Damage: 75
+  Disguise:
+   Type: player
+   Skin: 'nxinjahyp'
+   Invisible: false
+   Player: '&f&lEredin'
+   
+  Drops:
+    - money 3000
+  Equipment:
+    - gold_sword HAND
+    - gold_sword OFFHAND
+  Module:
+    ThreatTable: true
+  BossBar:
+   Enabled: true
+   Title: '&f&l&m &f&l&m &7&l&m=&f&l&m&n..&f&l&m&kb&f&l(&r &7✦ &f&lEredin &7✦ &f&l)&f&l&m&kb&f&l&m&n..&7&l&m=&f&l&m '
+   Range: 100
+   Color: WHITE
+   Style: CLEAR
+
+
+
+  KillMessages:
+   - '[&f&lEredin] &7se mnou se nemůžeš porovnávat &7<target.name>.'
+   - '[&f&lEredin] &7Myslel jsi, že mě porazíš, &7<target.name>? To byla chyba.'
+   - '[&f&lEredin] &7Jsi jen slabý smrtelník, &7<target.name>.'
+
+  AIGoalSelectors:
+   - 0 clear
+   - 1 meleeattack
+   - 2 randomlookaround
+   - 3 randomstroll
+  AITargetSelectors:
+   - 0 clear
+   - 1 players
+  Options:
+    AlwaysShowName: false
+    PreventRenaming: true
+    PreventLeashing: true
+    PreventItemPickup: true
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    PreventMobKillDrops: true
+    KnockbackResistance: 1
+    FollowRange: 60
+    MovementSpeed: 0.33
+    MaxCombatDistance: 40
+    Despawn: false
+    Silent: true
+    NoDefaultDrops: true
+    RepeatAllSkills: false
+
+  DamageModifiers:
+   - WITHER 0
+   - ENTITY_EXPLOSION 0
+   - BLOCK_EXPLOSION 0
+   - FALL 0
+   - SUICIDE 0
+   - DROWNING 0
+   - LIGHTNING 0
+   - STARVATION 0
+   - FALLING_BLOCK 0
+   - THORNS 0
+   - LAVA 0
+   - MELTING 0
+   - FIRE_TICK 0
+   - FIRE 0
+   - SUFFOCATION 0
+   - CONTACT 0
+
+  Skills:
+   - skill{s=EredinSpawn} ~onSpawn
+   - skill{s=EredinTeleport} ~onDamaged <24998 0.03
+   - skill{s=EredinStit} @Self =80%,=60%,=40%,=20% 
+   - skill{s=EredinBoure} ~onDamaged <24998 0.03
+   - skill{s=EredinuvOhen} ~onDamaged <24998 0.03
+   - skill{s=EredinOtrava} ~onDamage <24998 0.01
+   #- skill{s=EredinVybraniSkillu} ~onDamaged <19900 1
+   - skill{s=EredinZpomaleni} ~onDamage <24998 0.01
+   - skill{s=EredinOslabeni} ~onDamage <24998 0.01
+   - skill{s=EredinUder} ~onDamaged <12500 0.03 
+   - skill{s=EredinRychlost} ~onDamaged <12500 0.01
+   - skill{s=EredinovaTemnota} ~onDamaged <12500 0.01
+   - skill{s=EredinLifesteal} ~onDamaged <12500 0.03
+   - skill{s=EredinSmrt} ~onDeath
+   - message{m="&f&l&m &f&l&m &7&l&m=&f&l&m&n..&f&l&m&kb&f&l  &f&lEredin byl zabit... &f&l&m&kb&f&l&m&n..&7&l&m=&f&l&m"} @PlayersOnServer ~onDeath
+   - message{m="&f&l&m&kb&f&l  &f&lEredin povstal z temnoty &f&l&m&kb&b&l&m&n"} @PlayersOnServer ~onSpawn
+   - effect:sound{s=entity.elder_guardian.ambient;v=1;p=1.3} @self 0.5 ~onTimer:150
+   - effect:sound{s=entity.elder_guardian.hurt;v=1;p=0.5} @self ~onDamaged
+   - effect:sound{s=entity.vex.hurt;v=1;p=0.5} @self ~onDamaged
+   - effect:sound{s=entity.wither.hurt;v=0.3;p=2} @self ~onDamaged
+   - effect:sound{s=entity.enderdragon.hurt;v=0.3;p=1.3} @self ~onDamaged
+   - effect:sound{s=entity.elder_guardian.death;v=1;p=0.5} @self ~onDeath
+   - effect:sound{s=entity.wither.death;v=0.3;p=0.7} @self ~onDeath
+   - skill{s=EredinAI} ~onCombat
+   - skill{s=EredinEfekt} ~onTimer:60 @self
+
+  
+  
+ 
+
+
+
+
+
+
+

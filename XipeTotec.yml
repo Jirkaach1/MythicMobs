@@ -1,0 +1,185 @@
+XipeTotec:
+  Mobtype: PIG_ZOMBIE
+  Display: '&c&lXipe Totec'
+  Health: 22500
+  Damage: 85
+  Disguise:
+   Type: player
+   Skin: 'skin6'
+   Invisible: false
+   Player: '&c&lXipe Totec'
+   
+  Drops:
+
+  Equipment:
+    - diamond_sword HAND
+
+  Module:
+    ThreatTable: true
+  BossBar:
+   Enabled: true
+   Title: '&4&l&m&kb&4&l&kb&4&7&l&m=&4&l&m&n..&4&l&4&l&m&kb&4&4&l&r&4&l( &c&l⋙ &c&lXipe Totec ⋘ &4&l&r&4&l)&4&l&m&kb&4&l&m&n..&7&l&m=&4&l&kb&4&l&m&kb&4&l'
+   Range: 100
+   Color: RED
+   Style: SOLID
+
+
+
+  KillMessages:
+   - '&4&l[&4&lXipe Totec] &c&lTvá krev posílý mojí božskou bytost, &c&l<target.name>.'
+   - '&4&l[&4&lXipe Totec] &c&lTvá smrt je jen začátek rituálu, &c&l<target.name>.'
+   - '&4&l[&4&lXipe Totec] &c&lSmrt je jen začátek tvého nového života, &c&l<target.name>.'
+
+  AIGoalSelectors:
+   - 0 clear
+   - 1 meleeattack
+   - 2 randomlookaround
+   - 3 randomstroll
+  AITargetSelectors:
+   - 0 clear
+   - 1 players
+  Options:
+    AlwaysShowName: false
+    PreventRenaming: true
+    PreventLeashing: true
+    PreventItemPickup: true
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    PreventMobKillDrops: true
+    KnockbackResistance: 1
+    FollowRange: 65
+    MovementSpeed: 0.32
+    MaxCombatDistance: 45
+    Despawn: false
+    Silent: true
+    NoDefaultDrops: true
+    RepeatAllSkills: false
+
+  DamageModifiers:
+   - WITHER 0
+   - ENTITY_EXPLOSION 0
+   - BLOCK_EXPLOSION 0
+   - FALL 0
+   - SUICIDE 0
+   - DROWNING 0
+   - LIGHTNING 0
+   - STARVATION 0
+   - FALLING_BLOCK 0
+   - THORNS 0
+   - LAVA 0
+   - MELTING 0
+   - FIRE_TICK 0
+   - FIRE 0
+   - SUFFOCATION 0
+   - CONTACT 0
+
+  Skills:
+   - message{m="&4&l&kb&c&c&lBůh Xipe Totec byl poražen&4&l&kb§r"} @PlayersOnServer ~onDeath
+   - effect:sound{s=entity.zombie.infect;v=1;p=1} @self ~onDamaged
+   - effect:sound{s=entity.enderdragon.death;v=1;p=1} @self ~onDeath @PlayersInRadius{r=100}
+   - effect:sound{s=entity.wither.death;v=1;p=1} @self ~onDeath @PlayersInRadius{r=100}
+   - effect:sound{s=entity.evoker.celebrate;v=1;p=1} @self ~onDeath @PlayersInRadius{r=100}
+   - effect:sound{s=entity.guardian.death;v=1;p=1} @self ~onDeath @PlayersInRadius{r=100}
+   - effect:sound{s=entity.evocation_illager.celebrate;v=1;p=1} @self ~onDamaged
+   - effect:particleorbital{r=2;points=16;t=100;i=1;vy=20;particle=flame} @self ~onSpawn
+   - signal{s=XipeTotecSmrt} ~onDeath @MobsInRadius{r=100;t=XipeTotecOhen}
+   - skill{s=XipeTotecKrvavyKruh} ~onDamaged 0.01
+   - skill{s=XipeTotecBoure} ~onDamaged 0.01
+   - skill{s=XipeTotecOdhozeni} ~onDamaged 0.01
+   - skill{s=XipeTotecEfekt} ~onTimer:60 @self
+   - skill{s=XipeTotecOtrava} ~onDamaged 0.01
+   - skill{s=XipeTotecKrev} ~onDamaged 0.01
+   - skill{s=XipeTotecOhenOslabeni} ~onDamaged 0.01
+   - skill{s=XipeTotecZemetreseni} ~onDamaged 0.01
+XipeTotecSpawn:
+  Mobtype: ARMOR_STAND
+  Display: 'TEST'
+  Health: 200
+  Options:
+    Collidable: false
+    NoAI: true
+    Silent: true
+    Invulnerable: true 
+    NoGravity: false 
+    Silent: true 
+    FollowRange: 0 
+    Invisible: true
+    NoBasePlate: true
+    CanMove: true
+    PreventRenaming: true
+    PreventLeashing: true
+    PreventItemPickup: true
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    AlwaysShowName: false
+    Marker: true
+  Skills:
+    - skill{s=XipeTotecSpawn} ~onSpawn
+XipeTotecOhen:
+  Mobtype: ARMOR_STAND
+  Display: 'TEST'
+  Health: 400
+  Options:
+    Collidable: false
+    NoAI: true
+    Silent: true
+    Invulnerable: true 
+    NoGravity: false 
+    Silent: true 
+    FollowRange: 0 
+    Invisible: true
+    NoBasePlate: true
+    CanMove: true
+    PreventRenaming: true
+    PreventLeashing: true
+    PreventItemPickup: true
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    AlwaysShowName: false
+    PreventSunburn: true
+    Invincible: true
+    Small: true
+    Marker: true
+  Skills:
+   - setblock{m=FIRE;md=0} @selflocation ~onSpawn 
+   - effect:particlesphere{particle=flame;amount=100;radius=2;vertical=false;offsetY=1} @Self ~onSpawn
+   - skill{s=XipeTotecZhasnuti} ~onSignal:XipeTotecSmrt
+   - setblock{m=FIRE;md=0} @selflocation ~onTimer:30
+
+XipeTotecOhenTrigger:
+  Mobtype: ARMOR_STAND
+  Display: 'TEST'
+  Health: 400
+  Options:
+    Collidable: false
+    NoAI: true
+    Silent: true
+    Invulnerable: true 
+    NoGravity: false 
+    Silent: true 
+    FollowRange: 0 
+    Invisible: true
+    NoBasePlate: true
+    CanMove: true
+    PreventRenaming: true
+    PreventLeashing: true
+    PreventItemPickup: true
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    AlwaysShowName: false
+    Marker: true
+  Skills:
+   - skill{s=XipeTotecOhen} ~onSpawn
+   - message{m="&4&l&kb&c&c&lV pyramidě začal aztécký rituál&4&l&kb"} @PlayersOnServer ~onSpawn
+
+
+  
+  
+ 
+
+
+
+
+
+
+
