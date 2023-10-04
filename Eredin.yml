@@ -1,3 +1,7 @@
+
+#===================================================================================
+                                #ᴊɪʀᴋᴀᴀᴄʜ                                                       
+#===================================================================================
 Eredin:
   Mobtype: PIG_ZOMBIE
   Display: '&f&lEredin'
@@ -18,7 +22,7 @@ Eredin:
     ThreatTable: true
   BossBar:
    Enabled: true
-   Title: '&f&l&m &f&l&m &7&l&m=&f&l&m&n..&f&l&m&kb&f&l(&r &7✦ &f&lEredin &7✦ &f&l)&f&l&m&kb&f&l&m&n..&7&l&m=&f&l&m '
+   Title: '&f&l&m &f&l&m &7&l&m=&f&l&m&n..&f&l&m&kb&f&l(&r&7✦&f&lEredin&7✦&f&l)&f&l&m&kb&f&l&m&n..&7&l&m=&f&l&m '
    Range: 100
    Color: WHITE
    Style: CLEAR
