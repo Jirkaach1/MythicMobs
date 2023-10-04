@@ -1,0 +1,197 @@
+DettlaffSpawn:
+  Cooldown: 999999
+  Skills:
+  - potion{type=LEVITATION;d=300;l=1} @self
+  - effect:particleorbital{r=4;points=129;t=200;i=1;vy=20;particle=flame;} @self 
+  - effect:particletornado{p=reddust;cp=reddust;mr=1;h=3;i=1;d=200;rs=1;sh=1;cs=0;ca=0;chs=0.1;cvs=0.3;cps=1;} @self
+  - effect:particlesphere{particle=reddust;amount=300;radius=4} @self
+  - delay 20
+  - effect:particlesphere{particle=reddust;amount=300;radius=4} @self
+  - delay 20
+  - effect:particlesphere{particle=reddust;amount=300;radius=4} @self
+  - delay 20
+  - effect:particlesphere{particle=reddust;amount=300;radius=4} @self
+  - delay 20
+  - effect:particlesphere{particle=reddust;amount=300;radius=4} @self
+  - delay 20
+  - effect:particlesphere{particle=reddust;amount=300;radius=4} @self
+  - delay 20
+  - effect:particlesphere{particle=reddust;amount=300;radius=4} @self
+  - delay 20
+  - effect:particlesphere{particle=reddust;amount=300;radius=4} @self
+  - delay 20
+  - effect:particlesphere{particle=reddust;amount=300;radius=4} @self
+  - delay 20
+  - effect:particlesphere{particle=reddust;amount=2400;radius=20} @self
+  - delay 20
+  - effect:lightning @self
+  - effect:sound{s=entity.wither.spawn;v=1} @PlayersOnServer
+  - message{m="&4&l&kb&c&c&l Dettlaff se ztělesnil &4&l&kb"} @PlayersOnServer 
+  - summon{m=Dettlaff} @self 
+  - remove @self 
+DettlaffSpawnSkill:
+  Skills:
+  - delay 140
+  - randomskill{skills=DettlaffOhenOslabeni,DettlaffKrvavyKruh,DettlaffBoure,DettlaffZemetreseni} 
+DettlaffEfekt:
+  Skills:
+   - effect:particletornado{p=reddust;cp=reddust;mr=1;h=1;i=1;rs=1;sh=1;cs=1;ca=1;chs=0.1;cps=0;cyo=-1} 
+DettlaffOtrava:
+  Cooldown: 120
+  Skills:
+  - message{m="&4&l[&4&lDettlaff] &c&lotrávil hráče v okolí"} @PlayersInRadius{r=20}
+  - potion{t=POISON;d=200;l=8;force=true} @PlayersInRadius{r=10}
+  - effect:particlesphere{particle=happyVillager;amount=750;radius=10;vertical=false;offsetY=1} @Self
+  - delay 20
+  - effect:particlesphere{particle=happyVillager;amount=750;radius=10;vertical=false;offsetY=1} @Self
+DettlaffOhen:
+  Cooldown: 99999
+  Skills:
+  - command{c="mm m spawn DettlaffOhen DettlaffOhen world,152.581,179,482.520"} 
+  - delay 40
+  - command{c="mm m spawn DettlaffOhen DettlaffOhen world,158.556,179,482.514"} 
+  - delay 40
+  - command{c="mm m spawn DettlaffOhen DettlaffOhen world,158.545,179,478.471"} 
+  - delay 40
+  - command{c="mm m spawn DettlaffOhen DettlaffOhen world,152.544,179,478.556"} 
+  - delay 40
+  - summon{m=DettlaffSpawn} @self 
+  - remove @self 
+DettlaffZhasnuti:
+  Skills:
+  - setblock{m=AIR;md=0} @selflocation
+  - remove @self 
+DettlaffKrvavyKruh:
+  Cooldown: 60
+  Skills:
+  - message{m="&4&l[&4&lDettlaff] &c&lvyvolal krvavý kruh"} @PlayersInRadius{r=50}
+  - potion{t=SLOW;d=999999;l=10;force=true} @self
+  - effect:particlering{particle=reddust;radius=4;points=150;amount=1;hS=1;vS=0} @self
+  - effect:particlesphere{particle=smoke;amount=150;radius=4} @self
+  - damage{amount=8;ignoreArmor=true} @PlayersInRadius{r=4} 
+  - delay 15
+  - effect:particlering{particle=reddust;radius=4;points=150;amount=1;hS=1;vS=0} @self
+  - effect:particlesphere{particle=smoke;amount=150;radius=4} @self
+  - damage{amount=8;ignoreArmor=true} @PlayersInRadius{r=4} 
+  - delay 15
+  - effect:particlering{particle=reddust;radius=4;points=150;amount=1;hS=1;vS=0} @self
+  - effect:particlesphere{particle=smoke;amount=150;radius=4} @self
+  - damage{amount=8;ignoreArmor=true} @PlayersInRadius{r=4} 
+  - delay 15
+  - effect:particlering{particle=reddust;radius=7;points=200;amount=1;hS=1;vS=0} @self
+  - effect:particlesphere{particle=smoke;amount=150;radius=7} @self
+  - damage{amount=8;ignoreArmor=true} @PlayersInRadius{r=7} 
+  - delay 15
+  - effect:particlering{particle=reddust;radius=7;points=200;amount=1;hS=1;vS=0} @self
+  - effect:particlesphere{particle=smoke;amount=150;radius=7} @self
+  - damage{amount=8;ignoreArmor=true} @PlayersInRadius{r=7} 
+  - delay 15
+  - effect:particlering{particle=reddust;radius=7;points=200;amount=1;hS=1;vS=0} @self
+  - effect:particlesphere{particle=smoke;amount=150;radius=7} @self
+  - damage{amount=8;ignoreArmor=true} @PlayersInRadius{r=7} 
+  - delay 15
+  - effect:particlering{particle=reddust;radius=10;points=300;amount=1;hS=1;vS=0} @self
+  - effect:particlesphere{particle=smoke;amount=150;radius=10} @self
+  - damage{amount=8;ignoreArmor=true} @PlayersInRadius{r=10} 
+  - delay 15
+  - effect:particlering{particle=reddust;radius=10;points=300;amount=1;hS=1;vS=0} @self
+  - effect:particlesphere{particle=smoke;amount=150;radius=10} @self
+  - damage{amount=8;ignoreArmor=true} @PlayersInRadius{r=10} 
+  - delay 15
+  - effect:particlering{particle=reddust;radius=10;points=300;amount=1;hS=1;vS=0} @self
+  - effect:particlesphere{particle=smoke;amount=150;radius=10} @self
+  - damage{amount=8;ignoreArmor=true} @PlayersInRadius{r=10} 
+  - potion{t=SLOW;d=1;l=10;force=true} @self
+  - delay 750
+  - randomskill{skills=DettlaffOhenOslabeni,DettlaffKrvavyKruh,DettlaffBoure,DettlaffZemetreseni} 
+
+
+DettlaffBoure:
+  Cooldown: 60
+  Skills:
+  - message{m="&4&l[&4&lDettlaff] &c&lvyslal blesky na blízké hráče"} @PlayersInRadius{r=40}
+  - lightning{d=6} @PlayersInRadius{r=15} 
+  - delay 15
+  - lightning{d=6} @PlayersInRadius{r=15} 
+  - delay 15
+  - lightning{d=6} @PlayersInRadius{r=15}
+  - delay 15 
+  - lightning{d=6} @PlayersInRadius{r=15} 
+  - delay 15
+  - lightning{d=6} @PlayersInRadius{r=15} 
+  - delay 15
+  - lightning{d=6} @PlayersInRadius{r=15} 
+  - delay 15
+  - lightning{d=6} @PlayersInRadius{r=15} 
+  - delay 900
+  - randomskill{skills=DettlaffOhenOslabeni,DettlaffKrvavyKruh,DettlaffBoure,DettlaffZemetreseni} 
+DettlaffOdhozeni:
+  Skills:
+  - message{m="&4&l[&4&lDettlaff] &c&lodhodil blízké hráče"} @PlayersInRadius{r=40}
+  - effect:particletornado{p=reddust;cp=reddust;mr=1;h=1;i=1;rs=1;sh=1;cs=1;ca=1;chs=0.1;cps=0;cyo=-1} @PlayersInRadius{r=15}
+  - throw{velocity=3;velocityY=1;repeat=40;repeatInterval=1} @PlayersInRadius{r=15}
+  Cooldown: 120
+DettlaffKrev:
+  Skills:
+  - message{m="&4&l[&4&lDettlaff] &c&lvysál krev blízkých hráčů!"} @PlayersInRadius{r=40}
+  - potion{t=WEAKNESS;d=20;l=2} @PlayersInRadius{r=20}
+  - damage{a=10;ignoreArmor=true} @PlayersInRadius{r=20}
+  - heal{a=1500} @self
+  - effect:particlesphere{particle=reddust;radius=7;amount=500} @self
+  - sound{s=entity.vindication_illager.celebrate;v=1;p=1} @self
+  - delay 25
+  - effect:particlesphere{particle=reddust;radius=7;amount=500} @self
+  Cooldown: 120
+DettlaffOhenOslabeni:
+  Cooldown: 60
+  Skills:
+  - effect:particlesphere{particle=flame;amount=300;radius=3} @PlayersInRadius{r=30}
+  - effect:particlesphere{particle=flame;amount=200;radius=3} @PlayersInRadius{r=30}
+  - message{m="&4&l[&4&lDettlaff] &c&lzapálil a oslabil blízké hráče"} @PlayersInRadius{r=30}
+  - ignite{ticks=200} @PlayersInRadius{r=30}
+  - potion{t=WEAKNESS;d=100;l=2} @PlayersInRadius{r=30}
+  - delay 600
+  - randomskill{skills=DettlaffOhenOslabeni,DettlaffKrvavyKruh,DettlaffBoure,DettlaffZemetreseni} 
+DettlaffZemetreseni:
+  Cooldown: 60
+  Skills:
+  - message{m="&4&l[&4&lDettlaff] &c&lvyvolal zemětřesení"} @PlayersInRadius{r=40}
+  - delay 20
+  - sound{s=entity.generic.explode;v=1;p=1} @Self
+  - effect:particlesphere{particle=lava;amount=300;radius=5} @Self
+  - effect:particlesphere{particle=smoke;amount=200;radius=5} @Self
+  - delay 20
+  - effect:particlesphere{particle=lava;amount=300;radius=5} @Self
+  - effect:particlesphere{particle=smoke;amount=200;radius=5} @Self
+  - damage{amount=10;ignoreArmor=true} @PlayersInRadius{r=10}
+  - knockback{r=5;power=2} @PlayersInRadius{r=10}
+  - potion{t=SLOW;d=100;l=2;force=true} @PlayersInRadius{r=10}
+  - potion{t=CONFUSION;d=100;l=1;force=true} @PlayersInRadius{r=10}
+  - potion{t=WEAKNESS;d=100;l=2;force=true} @PlayersInRadius{r=10}
+  - potion{t=INCREASE_DAMAGE;d=200;l=2;force=true} @Self
+  - skill{s=DettlaffZemetreseniDMG} 
+  - delay 900
+  - randomskill{skills=DettlaffOhenOslabeni,DettlaffKrvavyKruh,DettlaffBoure,DettlaffZemetreseni} 
+  Cooldown: 120
+    
+DettlaffZemetreseniDMG:
+  Skills:
+  - velocity{dy=0.1} @PlayersInRadius{r=10}
+  - sound{s=entity.elder_guardian.hurt;v=1;p=1} @PlayersInRadius{r=10}
+  - effect{p=totem;amount=1;offsetY=0} @PlayersInRadius{r=10}
+  - delay 10
+  - damage{amount=2;ignoreArmor=true} @PlayersInRadius{r=10}
+  - delay 10
+  - damage{amount=2;ignoreArmor=true} @PlayersInRadius{r=10}
+  - delay 10
+  - damage{amount=2;ignoreArmor=true} @PlayersInRadius{r=10}
+  - delay 10
+  - damage{amount=2;ignoreArmor=true} @PlayersInRadius{r=10}
+  - delay 10
+  - damage{amount=2;ignoreArmor=true} @PlayersInRadius{r=10}
+  - delay 10
+  - damage{amount=2;ignoreArmor=true} @PlayersInRadius{r=10}
+
+
+
+

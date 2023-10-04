@@ -1,10 +1,3 @@
-
-#===================================================================================
-                                #ᴊɪʀᴋᴀᴀᴄʜ                                                       
-#===================================================================================
-
-
-
 Eredin:
   Mobtype: PIG_ZOMBIE
   Display: '&f&lEredin'
@@ -81,11 +74,9 @@ Eredin:
    - CONTACT 0
 
   Skills:
+   - velocity{m=set;x=0;y=0;z=0} @self ~onDamaged
    - skill{s=EredinSpawn} ~onSpawn
-   - skill{s=EredinTeleport} ~onDamaged <24998 0.03
    - skill{s=EredinStit} @Self =80%,=60%,=40%,=20% 
-   - skill{s=EredinBoure} ~onDamaged <24998 0.03
-   - skill{s=EredinuvOhen} ~onDamaged <24998 0.03
    - skill{s=EredinOtrava} ~onDamage <24998 0.01
    #- skill{s=EredinVybraniSkillu} ~onDamaged <19900 1
    - skill{s=EredinZpomaleni} ~onDamage <24998 0.01

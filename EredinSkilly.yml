@@ -1,8 +1,4 @@
 
-#===================================================================================
-                                #ᴊɪʀᴋᴀᴀᴄʜ                                                       
-#===================================================================================
-
 EredinSpawn:
   Cooldown: 999999
   Skills:
@@ -41,6 +37,8 @@ EredinSpawn:
     - teleport{spreadh=0;spreadv=0} @PIR{r=60;limit=1;sort=RANDOM}
     - delay 1
     - runAIGoalSelector{goal=meleeattack} @self
+    - delay 140
+    - randomskill{skills=EredinBoure,EredinTeleport,EredinOhen}
 
     
 
@@ -61,10 +59,11 @@ EredinSpawnTick:
   - projectile{onTick=EredinSpawnProjTick;onHit=EredinSpawnProjHit;v=10;i=1;hR=1;vR=1;StopAtBlock=true;g=0.6;vO=0.7} @ring{radius=12;points=12}
   - effect:sound{s=entity.wither.ambient;v=1;p=0.5} @PIR{r=100}
 EredinuvOhen:
-  Cooldown: 120
+  Cooldown: 90
   Skills:
   - message{m="<mob.name> &7vyvolal ohnivou vlnu"} @PlayersInRadius{r=50}
   - skill{s=EredinuvOhenLoop;repeat=4;repeatInterval=10}
+  - delay 1600
 
 EredinuvOhenLoop:
   Skills:
@@ -82,7 +81,7 @@ EredinuvOhenHit:
   - sound{s=entity.blaze.hurt;v=0.8;p=2} @PIR{r=30}
   - damage{a=1;ignoreArmor=true} @EntitiesNearOrigin{r=3}
 EredinTeleport:
-  Cooldown: 120
+  Cooldown: 51
   Skills:
   - potion{type=INVISIBILITY;l=3;duration=100} @self
   - effect:particlesphere{p=dragonbreath;amount=500;radius=5;d=60} @self 
@@ -94,23 +93,34 @@ EredinStit:
   Skills:
   - effect:sound{s=entity.wither.spawn;v=1;p=0.5} @PIR{r=40}
   - message{m="<mob.name> &7se vyhýbá poškození na 10 sekund"} @PlayersInRadius{r=50}
-  - potion{t=DAMAGE_RESISTANCE;d=999999;l=100;force=true} @self
+  - potion{t=DAMAGE_RESISTANCE;d=210;l=100;force=true} @self
   - effect:particlesphere{particle=enchantmenttable;amount=1000;radius=4;vertical=false;offsetY=1} @self
-  - delay 40
+  - delay 20
   - effect:particlesphere{particle=enchantmenttable;amount=1000;radius=4;vertical=false;offsetY=1} @self
-  - delay 40
+  - delay 20
   - effect:particlesphere{particle=enchantmenttable;amount=1000;radius=4;vertical=false;offsetY=1} @self
-  - delay 40
+  - delay 20
   - effect:particlesphere{particle=enchantmenttable;amount=1000;radius=4;vertical=false;offsetY=1} @self
-  - delay 40
+  - delay 20
   - effect:particlesphere{particle=enchantmenttable;amount=1000;radius=4;vertical=false;offsetY=1} @self
-  - delay 40
+  - delay 20
   - effect:particlesphere{particle=enchantmenttable;amount=1000;radius=4;vertical=false;offsetY=1} @self
-  - potion{t=DAMAGE_RESISTANCE;d=1;l=100;force=true} @self
+  - effect:particlesphere{particle=enchantmenttable;amount=1000;radius=4;vertical=false;offsetY=1} @self
+  - delay 20
+  - effect:particlesphere{particle=enchantmenttable;amount=1000;radius=4;vertical=false;offsetY=1} @self
+  - delay 20
+  - effect:particlesphere{particle=enchantmenttable;amount=1000;radius=4;vertical=false;offsetY=1} @self
+  - delay 20
+  - effect:particlesphere{particle=enchantmenttable;amount=1000;radius=4;vertical=false;offsetY=1} @self
+  - delay 20
+  - effect:particlesphere{particle=enchantmenttable;amount=1000;radius=4;vertical=false;offsetY=1} @self
+  - delay 20
+  - effect:particlesphere{particle=enchantmenttable;amount=1000;radius=4;vertical=false;offsetY=1} @self
+
 
 
 EredinBoure:
-  Cooldown: 120
+  Cooldown: 90
   Skills:
   - throw{velocity=5;velocityY=5} @PlayersInRadius{r=20}
   - potion{t=SLOW;d=999999;l=10;force=true} @self
@@ -123,13 +133,14 @@ EredinBoure:
   - effect:sound{s=entity.evocation_illager.prepare_attack;v=1;p=0.5} @PIR{r=60}
   - delay 25
   - message{m="<mob.name> &7vyvolal blesky"} @PlayersInRadius{r=50}
-  - skill{s=EredinBoureStorm;repeat=11;repeatInterval=10}
+  - skill{s=EredinBoureBlesky;repeat=11;repeatInterval=10}
   - delay 80
   - potion{t=SLOW;d=1;l=0;force=true} @self
   - potion{t=DAMAGE_RESISTANCE;d=1;l=0;force=true} @self
   - runAIGoalSelector{goal=meleeattack} @self
-EredinBoureStorm:
-  Cooldown: 120
+  - delay 1000
+  - randomskill{skills=EredinBoure,EredinTeleport,EredinuvOhen}
+EredinBoureBlesky:
   Skills:
   - effect:particlering{particle=cloud;radius=10;points=64;amount=1;hS=1;vS=0;y=0} @self
   - effect:sound{s=entity.lightning_bolt.thunder;v=1;p=1} @PIR{r=60}
